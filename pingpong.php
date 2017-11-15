@@ -43,6 +43,9 @@
         p span {
             font-weight: bold;
         }
+		p1 span {
+            font-weight: bold;
+        }
     </style>
     <?php
         $jugador1 = 0;
@@ -52,7 +55,7 @@
     <div class="pp_head">
         <h1>Ping Pong</h1>
 
-        <p>Desarrollado por Erik Axel Garza Ramirez 1551486</p>
+        <p1>Desarrollado por Erik Axel Garza Ramirez 1551486</p1>
         <p>Inicia el juego!</p>
     </div>
 
