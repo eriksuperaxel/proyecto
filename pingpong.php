@@ -52,6 +52,7 @@
     <div class="pp_head">
         <h1>Ping Pong</h1>
 
+        <p>Desarrollado por Erik Axel Garza Ramirez 1551486</p>
         <p>Inicia el juego!</p>
     </div>
 
