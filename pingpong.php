@@ -2,31 +2,20 @@
 <html>
 <head>
     <title>Juego de simulacion de una partida de Ping Pong</title>
-
-
 </head>
 <body>
-
-
     <style>
     /* Styles */
         * {
             margin: 0;
             padding: 0;
-
         }
-
         body {
             backgronda: skyblue;
-
         }
-
-
         .pp_head {
             text-align: center;
-
         }
-
         .content {
             line-height: 1.5;
             position: relative;
@@ -35,23 +24,14 @@
             backgronda: yellow;
             /*padding: 15px;*/
             box-sizing: content-box;
-
         }
-
         div.rondines:nth-child(2n) {
             backgronda: lightgreen;
             color: orangered;
-
         }
-
         .rondines {
             padding-left: 20px;
         }
-
-        
-
-        
-
         h2.ganador {
             margin-top: 10px;
             padding: 10px;
@@ -60,26 +40,15 @@
             text-transform: uppercase;
             color: red;
         }
-
         p span {
             font-weight: bold;
-
         }
     </style>
-
-
     <?php
         $jugador1 = 0;
         $jugador2 = 0;
         $ronda = 0;
     ?>
-
-
-
-
-
-
-
     <div class="pp_head">
         <h1>Ping Pong</h1>
 
@@ -126,5 +95,4 @@
      </div>
 
 </body>
-
 </html>
