@@ -38,13 +38,13 @@
 
         }
 
-        div.rallies:nth-child(2n) {
+        div.rondines:nth-child(2n) {
             backgronda: lightgreen;
             color: orangered;
 
         }
 
-        .rallies {
+        .rondines {
             padding-left: 20px;
         }
 
@@ -94,7 +94,7 @@
                 //para ganar un jugador debe llegar a 11 puntos minimo ademas de ganar por diferencia de 2 o mas puntos o sino debera seguir el juego
                 while (abs($jugador1 - $jugador2) < 2 || $jugador1 < 11 && $jugador2 < 11) {
                    $ronda++;
-                   echo "<div class =\"rallies\">";
+                   echo "<div class =\"rondines\">";
                    echo "<h2>Ronda $ronda</h2>\n";
 
                    //resultados al azar 1 maximo y 0 minimo
@@ -106,6 +106,7 @@
                    }
                    echo "Jugador1 = $jugador1<br />\n";
                    echo "Jugador2 = $jugador2<br />\n";
+				   
                    echo "</div>";
                 }
             ?>
