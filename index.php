@@ -1,27 +1,64 @@
-<!DOCTYPE html>
+<?php
+
+    //Programa por Juan Alba Maldonado (granvino@granvino.com).
+    //Dedicado a Yasmina Llaveria del Castillo.
+
+
+    //index.php - Indice del juego.
+
+
+    //Se inicia sesion o se continua:
+    session_name("lcma");
+    session_start("lcma");
+    
+    //Variable que define cual es esta pagina:
+    $this_file = "index.php";
+    
+    //Variable para el modo debug, para ver las cartas del ordenador:
+    $ver_cartas_del_ordenador = FALSE;
+
+    //Se crea un input type hidden en una variable con el SID, por si el navegador no tiene soportadas la cookies. Si soporta las cookies, la variable estara vacia pero seteada:
+    if (SID) { $sid_oculto = "<input type=\"hidden\" name=\"".session_name()."\" value=\"".session_id()."\">"; }
+    else { $sid_oculto = ""; }
+
+    //Se calcula si se ha enviado por GET el comenzar partida:
+    if (isset($HTTP_GET_VARS["comenzar"]) && $HTTP_GET_VARS["comenzar"] == "ok") { $HTTP_SESSION_VARS["partida_comenzada"] = TRUE; unset($HTTP_SESSION_VARS["cartas_usadas"]); unset($HTTP_SESSION_VARS["puntuacion_ordenador"]); unset($HTTP_SESSION_VARS["puntuacion_usuario"]); unset($HTTP_SESSION_VARS["ultimo_ganador"]); unset($HTTP_SESSION_VARS["palo_ordenador"]); unset($HTTP_SESSION_VARS["numero_ordenador"]); unset($HTTP_SESSION_VARS["hay_que_robar"]); }
+    //...o el finalizar partida:
+    elseif (isset($HTTP_GET_VARS["finalizar"]) && $HTTP_GET_VARS["finalizar"] == "ok") { $HTTP_SESSION_VARS["partida_comenzada"] = FALSE; unset($HTTP_SESSION_VARS["cartas_usadas"]); unset($HTTP_SESSION_VARS["puntuacion_ordenador"]); unset($HTTP_SESSION_VARS["puntuacion_usuario"]); unset($HTTP_SESSION_VARS["ultimo_ganador"]); }
+
+?>
 <html>
-<head>
-	<meta charset="utf-8">
-	<title>Sesiones</title>
-	<link rel="stylesheet" type="text/css" href="css/bootstrap.css">
-</head>
-<body>
-<div class="container">
-	<div class="row">
-		<div class="col-md-5 col-md-offset-3">
-		<div class="page-header text-center">
-		  <h1>Example Login Form <small>Developero</small></h1>
-		</div>
-			<form class="form-signin" method="post" action="manejador.php">
-	        <h2 class="form-signin-heading">Please sign in</h2>
-	        <label for="user" class="sr-only">User</label>
-	        <input type="text" name="user" class="form-control" placeholder="User name" required autofocus>
-	        <label for="password" class="sr-only">Password</label>
-	        <input type="password" name="password" class="form-control" placeholder="Password" required> 
-	        <input type="submit" name="submit" class="btn btn-lg btn-primary btn-block" value="Sign in">
-	      </form>
-		</div>
-	</div>	
-</div>
-</body>
+    <head>
+        <title>La Carta M&aacute;s Alta</title>
+    </head>
+    <body bgcolor="#0000aa" text="#ffffff" link="#dddddd" vlink="dddddd" alink="dddddd">
+        <center>
+            <h1 align="center">La Carta M&aacute;s Alta</h1>
+        </center>
+        <?php
+
+            //Si la partida esta comenzada, se incluye el juego:
+            if (isset($HTTP_SESSION_VARS["partida_comenzada"]) && $HTTP_SESSION_VARS["partida_comenzada"]) { include "juego.php"; }
+            //...o si no, se incluye el boton para comenzarla:
+            else
+             {
+
+        ?>
+            <center>
+                <form method="get" action="<?php echo $this_file; ?>">
+                    <?php echo $sid_oculto; ?>
+                    <input type="hidden" name="comenzar" value="ok">
+                    <input type="submit" name="boton" value="Comenzar juego" style="background-color:#aa0000; font-weight:bold; color:#ffffff; border:#00ffff 5px dashed; cursor: pointer; cursor: hand;" title="Haz click aqu&iacute; para comenzar">
+                </form>
+            </center>
+        <?php
+
+             }
+
+        ?>
+        <br>
+        <center>
+            <font color="#bbbbbb" size="1" face="arial">Dedicado a Yasmina Llaveria del Castillo<br>Programa por Juan Alba Maldonado (<a href="mailto:granvino@granvino.com;">granvino@granvino.com</a>)</font>
+        </center>
+    </body>
 </html>
